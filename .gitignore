@@ -1,0 +1,12 @@
+datasets/
+!datasets/.gitkeep
+
+__pycache__/
+*.pyc
+
+.idea/
+*.iml
+
+*.ipynb_checkpoints/
+
+thesis.ipynb
