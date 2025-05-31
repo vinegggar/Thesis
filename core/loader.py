@@ -2,6 +2,14 @@ import os
 import pandas as pd
 
 def load_movielens(path):
+    print(f"==> Шлях до даних: {os.path.abspath(path)}")
+    try:
+        entries = os.listdir(path)
+    except Exception as e:
+        print(f"Помилка читання директорії: {e}")
+        raise
+    print(f"==> Вміст теки:\n{entries}\n")
+
     if os.path.exists(os.path.join(path, "u.data")):  # 100k
         ratings = pd.read_csv(
             os.path.join(path, "u.data"),
@@ -39,7 +47,8 @@ def load_movielens(path):
             os.path.join(path, "movies.dat"),
             sep="::",
             engine="python",
-            names=["movie_id", "title", "genres"]
+            names=["movie_id", "title", "genres"],
+            encoding='latin-1'
         )
 
         users = pd.read_csv(
